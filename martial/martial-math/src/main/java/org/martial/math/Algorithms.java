@@ -1,7 +1,7 @@
 package org.martial.math;
 
 /**
- * s算法枚举
+ * 算法枚举
  * 
  * @author ming
  *
