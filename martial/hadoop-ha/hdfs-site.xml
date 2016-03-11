@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<!--
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License. See accompanying LICENSE file.
+-->
+
+<!-- Put site-specific property overrides in this file. -->
+
+<configuration>
+    <property>
+        <name>dfs.nameservices</name>
+        <value>wapsCluster</value>
+    </property>
+    <property>
+      <name>dfs.ha.namenodes.wapsCluster</name>
+      <value>nn1,nn2</value>
+    </property>
+    <property>
+        <name>dfs.namenode.rpc-address.wapsCluster.nn1</name>
+        <value>namenode-181:8020</value>
+    </property>
+    <property>
+      <name>dfs.namenode.rpc-address.wapsCluster.nn2</name>
+      <value>namenode-187:8020</value>
+    </property>
+    <property>
+      <name>dfs.namenode.http-address.wapsCluster.nn1</name>
+      <value>namenode-181:50070</value>
+    </property>
+    <property>
+      <name>dfs.namenode.http-address.wapsCluster.nn2</name>
+      <value>namenode-187:50070</value>
+    </property>
+    <property>
+      <name>dfs.namenode.shared.edits.dir</name>
+      <value>qjournal://qjManager-74:8485;qjManager-75:8485;qjManager-76:8485/wapsCluster</value>
+    </property>
+    <property>
+      <name>dfs.client.failover.proxy.provider.wapsCluster</name>
+      <value>org.apache.hadoop.hdfs.server.namenode.ha.ConfiguredFailoverProxyProvider</value>
+    </property>
+
+     <property>
+      <name>dfs.ha.fencing.methods</name>
+      <value>sshfence(hdfs)</value>
+    </property>
+    <property>
+      <name>dfs.ha.fencing.ssh.connect-timeout</name>
+      <value>30000</value>
+    </property>
+
+    <property>
+      <name>dfs.ha.fencing.ssh.private-key-files</name>
+      <value>/home/hdfs/.ssh/id_rsa</value>
+    </property>
+
+     <property>
+       <name>dfs.ha.automatic-failover.enabled</name>
+       <value>true</value>
+     </property>
+    <property>
+       <name>ha.zookeeper.quorum</name>
+       <value>zookeeper-77:2181,zookeeper-78:2181,zookeeper-79:2181,zookeeper-81:2181,zookeeper-82:2181</value>
+    </property>
+
+     <!-- hbase -->
+    <property>
+       <name>dfs.datanode.max.transfer.threads</name>
+       <value>5120</value>
+    </property>
+
+
+    <property>
+        <name>dfs.replication</name>
+        <value>3</value>
+    </property>
+	<property>
+        <name>dfs.blocksize</name>
+        <value>268435456</value>
+    </property>
+    <property>
+        <name>dfs.namenode.handler.count</name>
+        <value>100</value>
+    </property>
+    <property>
+        <name>dfs.datanode.handler.count</name>
+        <value>100</value>
+    </property>
+    <!-- 平衡的带宽，默认1m，现在改为10m -->
+    <property>
+        <name>dfs.datanode.balance.bandwidthPerSec</name>
+        <value>10485760</value>
+    </property>
+</configuration>

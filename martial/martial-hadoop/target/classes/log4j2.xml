@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+	<Appenders>
+		<Console name="console" target="SYSTEM_OUT">
+			<PatternLayout pattern="%d [%t] %-5p %-40.40c %X{traceId}-%m%n" />
+		</Console>
+		<File name="warn"
+			fileName="/usr/local/waps/job/mapreduce/logs/waps-job-wrong.log">
+			<PatternLayout>
+				<pattern>[%d] %p {%c} : %m%n</pattern>
+			</PatternLayout>
+		</File>
+		<File name="main" fileName="/usr/local/waps/job/mapreduce/logs/waps-job.log">
+			<PatternLayout>
+				<pattern>[%d] %p {%c} : %m%n</pattern>
+			</PatternLayout>
+		</File>
+	</Appenders>
+	<Loggers>
+		<Root level="info">
+			<Appender-ref ref="console" />
+			<Appender-ref ref="main" />
+		</Root>
+		<logger name="org.waps.jobs.utils.Errors" level="warn">
+			<Appender-ref ref="warn" />
+		</logger>
+	</Loggers>
+</Configuration>
